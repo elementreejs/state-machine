@@ -1,0 +1,57 @@
+{
+  "name": "state-machine",
+  "version": "0.1.0",
+  "description": "FSM (Finite State Machine) state factory for use with Elementree",
+  "main": "dist/statemachine.esm.js",
+  "unpkg": "dist/statemachine.esm.js",
+  "scripts": {
+    "build": "run-s clean lint test bundle",
+    "bundle": "webpack",
+    "clean": "rimraf dist",
+    "lint": "standard --fix",
+    "release:patch": "npm run build && npm version patch && npm publish",
+    "release:minor": "npm run build && npm version minor && npm publish",
+    "release:major": "npm run build && npm version major && npm publish",
+    "test": "ava --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementreejs/state-machine.git"
+  },
+  "author": "Mark Stahl <mjstahl@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elementreejs/state-machine/issues"
+  },
+  "homepage": "https://github.com/elementreejs/state-machine#readme",
+  "dependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "lodash.capitalize": "^4.2.1"
+  },
+  "devDependencies": {
+    "@purtuga/esm-webpack-plugin": "^1.1.1",
+    "ava": "^2.2.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "standard": "^13.1.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  },
+  "ava": {
+    "babel": {
+      "testOptions": {
+        "presets": [
+          [
+            "module:ava/stage-4",
+            {
+              "modules": false
+            }
+          ]
+        ]
+      }
+    },
+    "require": [
+      "esm"
+    ]
+  }
+}
