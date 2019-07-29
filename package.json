@@ -9,10 +9,10 @@
     "bundle": "webpack",
     "clean": "rimraf dist",
     "lint": "standard --fix",
-    "publish": "npm publish --access=public",
-    "release:patch": "npm run build && npm version patch && npm run publish",
-    "release:minor": "npm run build && npm version minor && npm run publish",
-    "release:major": "npm run build && npm version major && npm run publish",
+    "push": "npm publish --access=public",
+    "release:patch": "npm run build && npm version patch && npm run push",
+    "release:minor": "npm run build && npm version minor && npm run push",
+    "release:major": "npm run build && npm version major && npm run push",
     "test": "ava --verbose"
   },
   "repository": {
