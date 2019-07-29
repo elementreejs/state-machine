@@ -11,18 +11,19 @@ FSM (Finite State Machine) state factory for use with Elementree
       import { html, merge, prepare, render } from 'https://unpkg.com/elementree'
       import createStateMachine from 'https://unpkg.com/@elementree/state-machine'
 
-      const StateMachine = createStateMachine({
+      const State = createStateMachine({
         initial: 'liquid',
         liquid: {
-          to: 'solid',
+          freeze: 'solid',
+          boil: 'gas',
           value: '60F'
         },
         solid: {
-          to: ['gas', 'liquid'],
+          melt: 'liquid',
           value: '32F'
         },
         gas: {
-          to: 'liquid',
+          chill: 'liquid',
           value: '212F'
         }
       })
@@ -42,7 +43,7 @@ FSM (Finite State Machine) state factory for use with Elementree
         }
       }
 
-      merge('body', prepare(View, StateMachine))
+      merge('body', prepare(View, State))
     </script>
   </body>
 </html>
@@ -73,7 +74,7 @@ createStateMachine({
     value: '32F'
   },
   gas: {
-    chill: 'liquid'
+    chill: 'liquid',
     value: '212F'
   }
 })
