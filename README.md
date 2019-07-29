@@ -1,6 +1,53 @@
 # @elementree/state-machine
 FSM (Finite State Machine) state factory for use with Elementree
 
+## Example
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="module">
+      import { html, merge, prepare, render } from 'https://unpkg.com/elementree'
+      import createStateMachine from 'https://unpkg.com/@elementree/state-machine'
+
+      const StateMachine = createStateMachine({
+        initial: 'liquid',
+        liquid: {
+          to: 'solid',
+          value: '60F'
+        },
+        solid: {
+          to: ['gas', 'liquid'],
+          value: '32F'
+        },
+        gas: {
+          to: 'liquid',
+          value: '212F'
+        }
+      })
+
+      function View (state) {
+        return render`
+          <body>
+            <p>${state.state} ${state.value}</p>
+            ${Object.keys(state.transition).map(t => {
+              return render`<button onclick=${onClick(t)}>${t}</button>`
+            })}
+          </body>
+        `
+
+        function onClick (to) {
+          return () => state.transition[to]()
+        }
+      }
+
+      merge('body', prepare(View, StateMachine))
+    </script>
+  </body>
+</html>
+```
+
 ## API
 
 ```js
