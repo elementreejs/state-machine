@@ -1,6 +1,6 @@
 {
   "name": "@elementree/state-machine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "FSM (Finite State Machine) state factory for use with Elementree",
   "main": "dist/statemachine.esm.js",
   "unpkg": "dist/statemachine.esm.js",
