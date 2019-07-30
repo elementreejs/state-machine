@@ -8,7 +8,7 @@ FSM (Finite State Machine) state factory for use with Elementree
 <html>
   <body>
     <script type="module">
-      import { html, merge, prepare, render } from 'https://unpkg.com/elementree'
+      import { merge, prepare, render } from 'https://unpkg.com/elementree'
       import createStateMachine from 'https://unpkg.com/@elementree/state-machine'
 
       const State = createStateMachine({
